@@ -1,4 +1,11 @@
-const countries = [
+export const popularCountries = [
+    "China",
+    "US",
+    "Korea, South",
+    "Italy"
+];
+
+export const countries = [
 "Afghanistan", 
 "Albania", 
 "Algeria", 
@@ -177,5 +184,3 @@ const countries = [
 "Burma", 
 "S Zaandam"
 ]
-
-export default countries;

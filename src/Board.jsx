@@ -5,7 +5,7 @@ import './Card.css';
 import Graph from './Graph';
 import Card from './Card';
 import { DropdownButton, Dropdown } from 'react-bootstrap';
-import countries from './countries';
+import {countries, popularCountries} from './countries';
 
 
 class Board extends React.Component {
@@ -48,6 +48,16 @@ class Board extends React.Component {
                     <h1>Covid-19 Cases in {this.state.country}</h1>
                     <br/>
 				    <DropdownButton title="Select Country" onSelect={this.handleSelect} >
+                        {
+                            popularCountries.map(country => {
+                                return (
+                                    <Dropdown.Item eventKey={country}>
+                                        {country}
+                                    </Dropdown.Item>
+                                );
+                            })
+                        }
+                        <Dropdown.Divider />
                         {
                             countries.map(country => {
                                 return (
