@@ -1,94 +1,99 @@
 import React from 'react';
 import './Board.css';
-import CanvasJSReact from './canvasjs.react';
-
-const CanvasJSChart = CanvasJSReact.CanvasJSChart;
+import { Line } from 'react-chartjs-2';
 
 class Graph extends React.Component {
-    render() {
+    render(){
         let dataPoints = {
-            confirmed: [],
-            deaths: [],
-            recovered: []
+            labels: [],
+            data: {
+                confirmed: [],
+                deaths: [],
+                recovered: []
+            }
         };
 
         for (let i = 0; i < this.props.data.length; i++) {
             if (this.props.data[i].confirmed > 0) {
-                dataPoints.confirmed.push({
-                    x: new Date(this.props.data[i].date),
-                    y: this.props.data[i].confirmed
-                });
-                dataPoints.deaths.push({
-                    x: new Date(this.props.data[i].date),
-                    y: this.props.data[i].deaths
-                });
-                dataPoints.recovered.push({
-                    x: new Date(this.props.data[i].date),
-                    y: this.props.data[i].recovered
-                });
+                dataPoints.labels.push(this.props.data[i].date);
+                dataPoints.data.confirmed.push(this.props.data[i].confirmed);
+                dataPoints.data.recovered.push(this.props.data[i].recovered);
+                dataPoints.data.deaths.push(this.props.data[i].deaths);
             }
         }
 
-        const options = {
-            theme: "light2",
-            animationEnabled: true,
-            title: {
-                text: ""
-            },
-            axisY: {
-                includeZero: false,
-                title: "Number of Cases",
-            },
-            toolTip: {
-                shared: "true"
-            },
-            legend: {
-                cursor: "pointer"
-            },
-            data: [{
-                    type: "line",
-                    axisYType: "secondary",
-                    name: "confirmed",
-                    color: "orange",
-                    showInLegend: true,
-                    xValueFormatString: "MMM YYYY",
-                    yValueFormatString: "#",
-                    markerSize: 0,
-                    dataPoints: dataPoints.confirmed
-                },
-                {
-                    type: "line",
-                    axisYType: "secondary",
-                    name: "death",
-                    color: "red",
-                    showInLegend: true,
-                    xValueFormatString: "MMM YYYY",
-                    yValueFormatString: "#",
-                    markerSize: 0,
-                    dataPoints: dataPoints.deaths
-                },
-                {
-                    type: "line",
-                    axisYType: "secondary",
-                    name: "recovered",
-                    color: "green",
-                    showInLegend: true,
-                    xValueFormatString: "MMM YYYY",
-                    yValueFormatString: "#",
-                    markerSize: 0,
-                    dataPoints: dataPoints.recovered
-                }
+        const data = {
+            labels: dataPoints.labels,
+            datasets: [
+              {
+                label: 'Confirmed',
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: 'rgba(75,192,192,0.4)',
+                borderColor: 'rgba(248,207,107,1)',
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: 'rgba(248,207,107,1)',
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: 'rgba(248,207,107,1)',
+                pointHoverBorderColor: 'rgba(220,220,220,1)',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: dataPoints.data.confirmed
+              },
+              {
+                label: 'Deaths',
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: 'rgba(75,192,192,0.4)',
+                borderColor: 'rgba(237,109,133,1)',
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: 'rgba(237,109,133,1)',
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: 'rgba(237,109,133,1)',
+                pointHoverBorderColor: 'rgba(220,220,220,1)',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: dataPoints.data.deaths
+              },
+              {
+                label: 'Recovered',
+                fill: false,
+                lineTension: 0.1,
+                backgroundColor: 'rgba(75,192,192,0.4)',
+                borderColor: 'rgba(75,192,192,1)',
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: 'rgba(75,192,192,1)',
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+                pointHoverBorderColor: 'rgba(220,220,220,1)',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: dataPoints.data.recovered
+              }
             ]
-        }
-        return ( 
+          };
+
+        return (
             <div>
-                <CanvasJSChart options = {
-                    options
-                }
-                onRef = {
-                    ref => this.chart = ref
-                }
-                /> 
+                <Line data={data} />
             </div>
         );
     }

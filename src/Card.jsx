@@ -21,9 +21,9 @@ class Card extends React.Component{
             'borderRadius': '20px',
             'padding': '10px'
         };
-        const red = { 'color': 'red' };
-        const green = { 'color': 'green' };
-        const orange = { 'color': 'orange' };
+        const orange = { 'color': 'rgba(248,207,107,1)' };
+        const red = { 'color': 'rgba(237,109,133,1)' };
+        const green = { 'color': 'rgba(75,192,192,1)' };
 
         return (<div style={cardDiv}>
             <p>{this.props.date}</p>
