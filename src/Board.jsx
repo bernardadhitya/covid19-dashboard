@@ -1,11 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import './Board.css';
-import './Card.css';
 import Graph from './Graph';
-import Card from './Card';
-import { DropdownButton, Dropdown } from 'react-bootstrap';
+import {    DropdownButton, 
+            Dropdown,
+            Container,
+            Row,
+            Col } from 'react-bootstrap';
 import {countries, popularCountries} from './countries';
+import RecentStatusCard from './RecentStatusCard';
 
 
 class Board extends React.Component {
@@ -45,33 +48,50 @@ class Board extends React.Component {
         render() {
             return ( 
                 <div>
-                    <h1>Covid-19 Cases in {this.state.country}</h1>
-                    <br/>
-				    <DropdownButton title="Select Country" onSelect={this.handleSelect} >
-                        {
-                            popularCountries.map(country => {
-                                return (
-                                    <Dropdown.Item eventKey={country}>
-                                        {country}
-                                    </Dropdown.Item>
-                                );
-                            })
-                        }
-                        <Dropdown.Divider />
-                        {
-                            countries.map(country => {
-                                return (
-                                    <Dropdown.Item eventKey={country}>
-                                        {country}
-                                    </Dropdown.Item>
-                                );
-                            })
-                        }
-                    </DropdownButton>
-                    <br/>
-                    <Card data={this.state.data[this.state.dataLength - 1]}/>
-                    <br/>
-                    <Graph data={this.state.data}/>
+                    <Container>
+                        <Row>
+                            <Col>
+                                <h1>Covid-19 Cases in {this.state.country}</h1>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <DropdownButton variant="outline-info" title="Select Country"  onSelect={this.handleSelect} >
+                                    {
+                                        popularCountries.map(country => {
+                                            return (
+                                                <Dropdown.Item eventKey={country}>
+                                                    {country}
+                                                </Dropdown.Item>
+                                            );
+                                        })
+                                    }
+                                    <Dropdown.Divider />
+                                    {
+                                        countries.map(country => {
+                                            return (
+                                                <Dropdown.Item eventKey={country}>
+                                                    {country}
+                                                </Dropdown.Item>
+                                            );
+                                        })
+                                    }
+                                </DropdownButton>
+                            </Col>
+                        </Row>
+                        <br/>
+                        <Row>
+                            <Col>
+                                <RecentStatusCard data={this.state.data[this.state.dataLength - 1]}/>
+                            </Col>
+                        </Row>
+                        <br/>
+                        <Row>
+                            <Col>
+                                <Graph data={this.state.data}/>
+                            </Col>
+                        </Row>
+                    </Container>
                 </div>
             );
         }

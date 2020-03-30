@@ -15,7 +15,7 @@ class Graph extends React.Component {
 
         for (let i = 0; i < this.props.data.length; i++) {
             if (this.props.data[i].confirmed > 0) {
-                dataPoints.labels.push(this.props.data[i].date);
+                dataPoints.labels.push(this.props.data[i].date.split('-')[2]);
                 dataPoints.data.confirmed.push(this.props.data[i].confirmed);
                 dataPoints.data.recovered.push(this.props.data[i].recovered);
                 dataPoints.data.deaths.push(this.props.data[i].deaths);
