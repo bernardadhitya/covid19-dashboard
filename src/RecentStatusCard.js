@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './NewCard.module.css';
+import styles from './RecentStatusCard.module.css';
 import classNames from 'classnames';
 
-class NewCard extends React.Component{
+class RecentStatusCard extends React.Component{
     render(){
         return (
             <div className={classNames({
@@ -16,4 +16,4 @@ class NewCard extends React.Component{
     }
 }
 
-export default NewCard;
+export default RecentStatusCard;

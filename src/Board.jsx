@@ -1,14 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import './Board.css';
-import Graph from './Graph';
 import {    DropdownButton, 
             Dropdown,
             Container,
             Row,
             Col } from 'react-bootstrap';
 import {countries, popularCountries} from './countries';
-import RecentStatusCard from './RecentStatusCard';
+import DataSection from './DataSection';
+import NewsSection from './NewsSection';
 
 
 class Board extends React.Component {
@@ -23,6 +23,7 @@ class Board extends React.Component {
                         recovered: 0
                     }
                 ],
+                news: [],
                 dataLength: 1
             }
         }
@@ -32,12 +33,18 @@ class Board extends React.Component {
         }
 
         async loadData (selectedCountry) {
-            const res = await axios.get(`https://pomber.github.io/covid19/timeseries.json`);
-            const data = res.data[selectedCountry];
+            const countryCode = 'id';
+            const apiKey = 'b90d874229d74212b87711367dff21bf';
+            const category = 'health';
+            const res_timeseries = await axios.get(`https://pomber.github.io/covid19/timeseries.json`);
+            const res_newsapi = await axios.get(`https://newsapi.org/v2/top-headlines?country=${countryCode}&category=${category}&apiKey=${apiKey}`)
+            const data = res_timeseries.data[selectedCountry];
+            const news = res_newsapi.data.articles;
             this.setState({
                 country: selectedCountry,
                 data,
-                dataLength: data.length
+                dataLength: data.length,
+                news: news
             });
         }
 
@@ -81,14 +88,11 @@ class Board extends React.Component {
                         </Row>
                         <br/>
                         <Row>
-                            <Col>
-                                <RecentStatusCard data={this.state.data[this.state.dataLength - 1]}/>
+                            <Col md={8}>
+                                <DataSection data={this.state.data}/>
                             </Col>
-                        </Row>
-                        <br/>
-                        <Row>
-                            <Col>
-                                <Graph data={this.state.data}/>
+                            <Col md={4}>
+                                <NewsSection data={this.state.news}/>
                             </Col>
                         </Row>
                     </Container>

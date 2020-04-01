@@ -5,7 +5,7 @@
     text-align: left;
 }
 
-h4, p{
+.card h4, .card p{
     color: white;
 }
 
