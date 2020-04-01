@@ -6,7 +6,7 @@ import {    DropdownButton,
             Container,
             Row,
             Col } from 'react-bootstrap';
-import {countries, popularCountries} from './countries';
+import {countries, popularCountries, countryCodes} from './countries';
 import DataSection from './DataSection';
 import NewsSection from './NewsSection';
 
@@ -33,7 +33,10 @@ class Board extends React.Component {
         }
 
         async loadData (selectedCountry) {
-            const countryCode = 'id';
+            const countryCode = countryCodes.filter(obj => {
+                return obj.country === selectedCountry;
+            })[0].code;
+            
             const apiKey = 'b90d874229d74212b87711367dff21bf';
             const category = 'health';
             const res_timeseries = await axios.get(`https://pomber.github.io/covid19/timeseries.json`);
