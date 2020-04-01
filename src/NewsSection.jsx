@@ -22,7 +22,7 @@ class NewsSection extends React.Component{
                                         title = {news.title}
                                         pusblishedAt = {news.publishedAt}
                                         description = {news.description}
-                                        line = {news.url}
+                                        link = {news.url}
                                         />
                                     </Col>
                                 </Row>
