@@ -1,7 +1,7 @@
 import React from 'react';
 import Graph from './Graph';
 import RecentStatusSection from './RecentStatusSection';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 class DataSection extends React.Component{
     render(){

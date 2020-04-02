@@ -92,7 +92,7 @@ class Graph extends React.Component {
           };
 
         return (
-            <div>
+            <div style={{marginBottom: '20px'}}>
                 <Line data={data} />
             </div>
         );
