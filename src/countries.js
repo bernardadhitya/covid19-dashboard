@@ -5,7 +5,7 @@ export const popularCountries = [
     'Italy',
     'Indonesia'
 ];
-
+/*
 export const countries = [
 "Afghanistan", 
 "Albania", 
@@ -185,6 +185,7 @@ export const countries = [
 "Burma", 
 "S Zaandam"
 ]
+*/
 
 
 export const countryCodes = [
@@ -206,7 +207,6 @@ export const countryCodes = [
     {code: 'fr', country: 'France'},
     {code: 'gb', country: 'United Kingdom'},
     {code: 'gr', country: 'Greece'},
-    {code: 'hk', country: 'Hong Kong'},
     {code: 'hu', country: 'Hungary'},
     {code: 'id', country: 'Indonesia'},
     {code: 'ie', country: 'Ireland'},
@@ -242,4 +242,63 @@ export const countryCodes = [
     {code: 'us', country: 'US'},
     {code: 've', country: 'Venezuela'},
     {code: 'za', country: 'South Africa'}
+]
+
+
+
+
+export const countries = [
+    'United Arab Emirates',
+    'Argentina',
+    'Austria',
+    'Australia',
+    'Belgium',
+    'Bulgaria',
+    'Brazil',
+    'Canada',
+    'Switzerland',
+    'China',
+    'Colombia',
+    'Cuba',
+    'Czechia',
+    'Germany',
+    'Egypt',
+    'France',
+    'United Kingdom',
+    'Greece',
+    'Hungary',
+    'Indonesia',
+    'Ireland',
+    'Israel',
+    'India',
+    'Italy',
+    'Japan',
+    'Korea, South',
+    'Lithuania',
+    'Latvia',
+    'Morocco',
+    'Mexico',
+    'Malaysia',
+    'Nigeria',
+    'Netherlands',
+    'Norway',
+    'New Zealand',
+    'Philippines',
+    'Poland',
+    'Portugal',
+    'Romania',
+    'Serbia',
+    'Russia',
+    'Saudi Arabia',
+    'Sweden',
+    'Singapore',
+    'Slovenia',
+    'Slovakia',
+    'Thailand',
+    'Turkey',
+    'Taiwan*',
+    'Ukraine',
+    'US',
+    'Venezuela',
+    'South Africa'
 ]
