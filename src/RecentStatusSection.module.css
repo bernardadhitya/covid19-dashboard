@@ -1,0 +1,24 @@
+.regular{
+    display: block;    
+}
+
+.compact{
+    display: block;
+}
+
+.horizontalScroll{
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+@media only screen and (max-width: 767px) {
+    .regular{
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .compact{
+        display: none
+    }
+}

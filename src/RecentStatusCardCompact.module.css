@@ -1,0 +1,19 @@
+.card{
+    height: auto;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    background-image: linear-gradient(
+        to right, 
+        rgb(90, 168, 209), 
+        rgb(31, 113, 157)
+    );
+}
+
+.data p{
+    margin-bottom: 5px;
+}
+
+.card h4, .card p{
+    color: white;
+}

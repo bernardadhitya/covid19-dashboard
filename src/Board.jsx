@@ -58,7 +58,7 @@ class Board extends React.Component {
         render() {
             return ( 
                 <div>
-                    <Container>
+                    <Container fluid>
                         <Row>
                             <Col>
                                 <h1>Covid-19 Cases in {this.state.country}</h1>
@@ -91,10 +91,11 @@ class Board extends React.Component {
                         </Row>
                         <br/>
                         <Row>
-                            <Col md={8}>
+                            <Col md={8} xs={12}>
                                 <DataSection data={this.state.data}/>
                             </Col>
-                            <Col md={4}>
+                            <br/>
+                            <Col md={4} xs={12}>
                                 <NewsSection data={this.state.news}/>
                             </Col>
                         </Row>
