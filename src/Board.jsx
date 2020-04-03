@@ -5,7 +5,8 @@ import {    DropdownButton,
             Dropdown,
             Container,
             Row,
-            Col } from 'react-bootstrap';
+            Col,
+            Card } from 'react-bootstrap';
 import {countries, popularCountries, countryCodes} from './countries';
 import DataSection from './DataSection';
 import NewsSection from './NewsSection';
@@ -61,11 +62,6 @@ class Board extends React.Component {
                     <Container fluid>
                         <Row>
                             <Col>
-                                <h1>Covid-19 Cases in {this.state.country}</h1>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col>
                                 <DropdownButton variant="outline-info" title="Select Country"  onSelect={this.handleSelect} >
                                     {
                                         popularCountries.map(country => {
@@ -92,7 +88,12 @@ class Board extends React.Component {
                         <br/>
                         <Row>
                             <Col md={8} xs={12}>
-                                <DataSection data={this.state.data}/>
+                                <Card>
+                                    <Card.Header>COVID-19 Cases in {this.state.country}</Card.Header>
+                                    <Card.Body>
+                                        <DataSection data={this.state.data}/>
+                                    </Card.Body>
+                                </Card>
                             </Col>
                             <br/>
                             <Col md={4} xs={12}>
