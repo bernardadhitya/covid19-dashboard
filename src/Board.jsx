@@ -10,6 +10,7 @@ import {    DropdownButton,
 import {countries, popularCountries, countryCodes} from './countries';
 import DataSection from './DataSection';
 import NewsSection from './NewsSection';
+import ReactSearchBox from 'react-search-box';
 
 
 class Board extends React.Component {
@@ -25,7 +26,29 @@ class Board extends React.Component {
                     }
                 ],
                 news: [],
-                dataLength: 1
+                dataLength: 1,
+                list: [
+                    {
+                      key: 'john',
+                      value: 'John Doe',
+                    },
+                    {
+                      key: 'jane',
+                      value: 'Jane Doe',
+                    },
+                    {
+                      key: 'mary',
+                      value: 'Mary Phillips',
+                    },
+                    {
+                      key: 'robert',
+                      value: 'Robert',
+                    },
+                    {
+                      key: 'karius',
+                      value: 'Karius',
+                    },
+                ]
             }
         }
 
@@ -53,7 +76,7 @@ class Board extends React.Component {
         }
 
         handleSelect = (eventKey) => {
-            this.loadData(eventKey);
+            this.loadData(eventKey.value);
         }
 
         render() {
@@ -62,27 +85,26 @@ class Board extends React.Component {
                     <Container fluid>
                         <Row>
                             <Col>
-                                <DropdownButton variant="outline-info" title="Select Country"  onSelect={this.handleSelect} >
-                                    {
-                                        popularCountries.map(country => {
-                                            return (
-                                                <Dropdown.Item eventKey={country}>
-                                                    {country}
-                                                </Dropdown.Item>
-                                            );
-                                        })
-                                    }
-                                    <Dropdown.Divider />
-                                    {
+                                <br/>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} md={6}>
+                                <ReactSearchBox
+                                    placeholder="Search countries (ex: Indonesia, China, etc)"
+                                    data={
                                         countries.map(country => {
-                                            return (
-                                                <Dropdown.Item eventKey={country}>
-                                                    {country}
-                                                </Dropdown.Item>
-                                            );
+                                            return {
+                                                key: country,
+                                                value: country
+                                            };
                                         })
                                     }
-                                </DropdownButton>
+                                    onSelect={this.handleSelect}
+                                    fuseConfigs={{
+                                        threshold: 0.05,
+                                    }}
+                                />
                             </Col>
                         </Row>
                         <br/>
