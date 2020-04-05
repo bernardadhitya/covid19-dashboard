@@ -1,0 +1,29 @@
+.gradientNavbar{
+  padding: 15px;
+  background-image: linear-gradient(
+    to right, 
+    rgba(211,54,94), 
+    rgb(236, 112, 46)
+  );
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+              0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+              0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media only screen and (min-width: 768px) {
+  .gradientNavbar{
+    padding-right: 50%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .card{
+    margin-top: 30px;
+  }
+}
+
+

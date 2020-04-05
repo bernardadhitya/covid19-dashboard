@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import './Board.css';
 import {    DropdownButton, 
             Dropdown,
             Container,
@@ -10,6 +9,7 @@ import {    DropdownButton,
 import {countries, popularCountries, countryCodes} from './countries';
 import DataSection from './DataSection';
 import NewsSection from './NewsSection';
+import styles from './Board.module.css';
 import ReactSearchBox from 'react-search-box';
 
 
@@ -27,28 +27,6 @@ class Board extends React.Component {
                 ],
                 news: [],
                 dataLength: 1,
-                list: [
-                    {
-                      key: 'john',
-                      value: 'John Doe',
-                    },
-                    {
-                      key: 'jane',
-                      value: 'Jane Doe',
-                    },
-                    {
-                      key: 'mary',
-                      value: 'Mary Phillips',
-                    },
-                    {
-                      key: 'robert',
-                      value: 'Robert',
-                    },
-                    {
-                      key: 'karius',
-                      value: 'Karius',
-                    },
-                ]
             }
         }
 
@@ -82,6 +60,23 @@ class Board extends React.Component {
         render() {
             return ( 
                 <div>
+                    <div className={styles.gradientNavbar}>
+                        <ReactSearchBox
+                            placeholder="Search countries (ex: Indonesia, China, etc)"
+                            data={
+                                countries.map(country => {
+                                    return {
+                                        key: country,
+                                        value: country
+                                    };
+                                })
+                            }
+                            onSelect={this.handleSelect}
+                            fuseConfigs={{
+                                threshold: 0.05,
+                            }}
+                        />
+                    </div>
                     <Container fluid>
                         <Row>
                             <Col>
@@ -89,28 +84,8 @@ class Board extends React.Component {
                             </Col>
                         </Row>
                         <Row>
-                            <Col xs={12} md={6}>
-                                <ReactSearchBox
-                                    placeholder="Search countries (ex: Indonesia, China, etc)"
-                                    data={
-                                        countries.map(country => {
-                                            return {
-                                                key: country,
-                                                value: country
-                                            };
-                                        })
-                                    }
-                                    onSelect={this.handleSelect}
-                                    fuseConfigs={{
-                                        threshold: 0.05,
-                                    }}
-                                />
-                            </Col>
-                        </Row>
-                        <br/>
-                        <Row>
                             <Col md={8} xs={12}>
-                                <Card>
+                                <Card className={styles.card}>
                                     <Card.Header>COVID-19 Cases in {this.state.country}</Card.Header>
                                     <Card.Body>
                                         <DataSection data={this.state.data}/>
@@ -119,7 +94,12 @@ class Board extends React.Component {
                             </Col>
                             <br/>
                             <Col md={4} xs={12}>
-                                <NewsSection data={this.state.news}/>
+                                <Card className={styles.card}>
+                                    <Card.Header>Related News</Card.Header>
+                                    <Card.Body>
+                                        <NewsSection data={this.state.news}/>
+                                    </Card.Body>
+                                </Card>
                             </Col>
                         </Row>
                     </Container>

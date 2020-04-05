@@ -11,25 +11,25 @@
 
 .confirmed{
     background-image: linear-gradient(
-        to right, 
-        rgba(248,207,107,1), 
-        rgb(238, 189, 161)
+        to top right, 
+        rgba(250,218,96), 
+        rgb(240, 140, 98)
     );
 }
 
 .deaths{
     background-image: linear-gradient(
-        to right, 
-        rgba(237,109,133,1), 
-        rgb(223, 182, 190)
+        to top right, 
+        rgba(227,93,158), 
+        rgb(238, 124, 123)
     );
 }
 
 .recovered{
     background-image: linear-gradient(
-        to right, 
-        rgba(75,192,192,1), 
-        rgb(57, 168, 168)
+        to top right, 
+        rgba(118,224,157), 
+        rgb(94, 176, 181)
     );
 }
 

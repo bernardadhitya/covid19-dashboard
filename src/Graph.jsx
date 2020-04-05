@@ -1,5 +1,4 @@
 import React from 'react';
-import './Board.css';
 import { Line } from 'react-chartjs-2';
 
 class Graph extends React.Component {
