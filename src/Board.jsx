@@ -1,12 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import {    DropdownButton, 
-            Dropdown,
-            Container,
+import {    Container,
             Row,
             Col,
             Card } from 'react-bootstrap';
-import {countries, popularCountries, countryCodes} from './countries';
+import {countries, countryCodes} from './countries';
 import DataSection from './DataSection';
 import NewsSection from './NewsSection';
 import styles from './Board.module.css';
@@ -40,11 +38,13 @@ class Board extends React.Component {
             })[0].code;
             
             const apiKey = 'b90d874229d74212b87711367dff21bf';
-            const category = 'health';
+            const category = 'health'
+
             const res_timeseries = await axios.get(`https://pomber.github.io/covid19/timeseries.json`);
             const res_newsapi = await axios.get(`https://newsapi.org/v2/top-headlines?country=${countryCode}&category=${category}&apiKey=${apiKey}`)
             const data = res_timeseries.data[selectedCountry];
             const news = res_newsapi.data.articles;
+            
             this.setState({
                 country: selectedCountry,
                 data,
@@ -72,9 +72,6 @@ class Board extends React.Component {
                                 })
                             }
                             onSelect={this.handleSelect}
-                            fuseConfigs={{
-                                threshold: 0.05,
-                            }}
                         />
                     </div>
                     <Container fluid>

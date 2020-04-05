@@ -1,0 +1,26 @@
+.newsCard{
+    display: flex;
+    height: auto;
+    border-radius: 10px;
+    text-align: left;
+    border: 1px solid rgb(216, 216, 216)
+}
+
+.newsContent{
+    margin: 20px 10px;
+}
+
+img{
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 767px) {
+    .newsCard{
+        display: block;
+    }
+    img{
+      width: 100%
+    }
+}

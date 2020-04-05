@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import RecentStatusCard from './RecentStatusCard';
-import RecentStatusCardCompact from './RecentStatusCardCompact';
 import styles from './RecentStatusSection.module.css';
 
 class RecentStatusSection extends React.Component{
