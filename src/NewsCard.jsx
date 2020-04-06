@@ -9,18 +9,23 @@ class NewsCard extends React.Component{
                      formattedDateAndTime[1].split(":")[1];
         return date + ' ' + time;
     }
+    formatTitle(title){
+        return title.length > 50 ? 
+                title.split(' - ')[0].substring(0,50) + '...' : 
+                title.split(' - ')[0].substring(0,50);
+    }
     render(){
         return (
-            <div className={styles.newsCard}>
-                <img src={this.props.imgUrl} alt=""/>
-                <div className={styles.newsContent}>
-                    <a href={this.props.link}>
-                        <h5>{this.props.title.split(' - ')[0]}</h5>
-                    </a>
-                    <h6>{this.formatDate(this.props.pusblishedAt)}</h6>
-                    <p>{this.props.title.split(' - ')[1]}</p>
+            <a href={this.props.link}>
+                <div className={styles.newsCard}>
+                    <img src={this.props.imgUrl} alt=""/>
+                    <div className={styles.newsContent}>
+                        <h5>{this.formatTitle(this.props.title)}</h5>
+                        <h6>{this.formatDate(this.props.pusblishedAt)}</h6>
+                        <p>{this.props.title.split(' - ')[1]}</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         )
     }
 }

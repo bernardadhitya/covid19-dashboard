@@ -5,6 +5,10 @@
     text-align: left;
 }
 
+.card:hover{
+    transform: scale(1.1, 1.1);
+}
+
 .card h4, .card p{
     color: white;
 }
@@ -38,5 +42,8 @@
         margin-right: 10px;
         display: inline-block;
         width: 200px;
+    }
+    .card:hover{
+        transform: scale(1.0, 1.0);
     }
 }

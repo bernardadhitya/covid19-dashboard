@@ -4,8 +4,11 @@ This is a simple COVID-19 dashboard made with React.js that lets you see what is
 
 ## Installation
 
-Assuming you already have Node.js installed in your device, to install the project, you can clone this repository to your device, then follow these steps:
-
+Assuming you already have [Node.js](https://nodejs.org/en/download/) installed in your device, to install the project, you can clone this repository to your device, then follow these steps:
+- Go to the project directory
+    ```
+    cd covid19-dashboard
+    ```
 - Install the dependencies
     ```
     npm install

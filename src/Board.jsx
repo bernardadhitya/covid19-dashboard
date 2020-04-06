@@ -75,11 +75,7 @@ class Board extends React.Component {
                         />
                     </div>
                     <Container fluid>
-                        <Row>
-                            <Col>
-                                <br/>
-                            </Col>
-                        </Row>
+                        <br/>
                         <Row>
                             <Col md={8} xs={12}>
                                 <Card className={styles.card}>

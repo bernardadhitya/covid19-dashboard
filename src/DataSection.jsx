@@ -7,19 +7,9 @@ class DataSection extends React.Component{
     render(){
         return (
             <div>
-                <Container fluid>
-                    <Row>
-                        <Col>
-                            <RecentStatusSection data={this.props.data[this.props.data.length - 1]}/>
-                        </Col>
-                    </Row>
-                    <br/>
-                    <Row>
-                        <Col>
-                            <Graph data={this.props.data}/>
-                        </Col>
-                    </Row>
-                </Container>
+                <RecentStatusSection data={this.props.data[this.props.data.length - 1]}/>
+                <br/>
+                <Graph data={this.props.data}/>    
             </div>
         );
     }
