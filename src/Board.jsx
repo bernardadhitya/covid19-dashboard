@@ -9,6 +9,7 @@ import DataSection from './DataSection';
 import NewsSection from './NewsSection';
 import styles from './Board.module.css';
 import ReactSearchBox from 'react-search-box';
+import GreetingCard from './GreetingCard';
 
 
 class Board extends React.Component {
@@ -25,6 +26,7 @@ class Board extends React.Component {
                 ],
                 news: [],
                 dataLength: 1,
+                showWelcomeMessage: true
             }
         }
 
@@ -57,6 +59,12 @@ class Board extends React.Component {
             this.loadData(eventKey.value);
         }
 
+        toggleShowA = () => {
+            this.setState({
+                showWelcomeMessage: !this.state.showWelcomeMessage
+            })
+        };
+
         render() {
             return ( 
                 <div>
@@ -75,6 +83,12 @@ class Board extends React.Component {
                         />
                     </div>
                     <Container fluid>
+                        <br/>
+                        <Row>
+                            <Col md={6} xs={12}>
+                                <GreetingCard/>
+                            </Col>
+                        </Row>
                         <br/>
                         <Row>
                             <Col md={8} xs={12}>
