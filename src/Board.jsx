@@ -93,7 +93,7 @@ class Board extends React.Component {
                             <Col md={6} xs={12}>
                                 <GreetingCard/>
                             </Col>
-                            <Col md={6} xs={12}>
+                            <Col md={4} xs={12}>
                                 <Card className={styles.card}>
                                     <Card.Header>Top Confirmed Cases</Card.Header>
                                     <Card.Body>
@@ -123,6 +123,13 @@ class Board extends React.Component {
                             </Col>
                         </Row>
                     </Container>
+                    <br/>
+                    <div className={styles.footer}>
+                        <a href="https://github.com/bernardadhitya">
+                            <img src={require('./assets/github.png')} alt=""/>
+                        </a>
+                        <h6>created by Bernard Adhitya</h6>
+                    </div>
                 </div>
             );
         }
