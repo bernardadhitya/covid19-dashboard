@@ -10,6 +10,7 @@ import NewsSection from './NewsSection';
 import styles from './Board.module.css';
 import ReactSearchBox from 'react-search-box';
 import GreetingCard from './GreetingCard';
+import CountryComparisonSection from './CountryComparisonSection';
 
 
 class Board extends React.Component {
@@ -24,6 +25,7 @@ class Board extends React.Component {
                         recovered: 0
                     }
                 ],
+                allData: {},
                 news: [],
                 dataLength: 1,
                 showWelcomeMessage: true
@@ -44,14 +46,17 @@ class Board extends React.Component {
 
             const res_timeseries = await axios.get(`https://pomber.github.io/covid19/timeseries.json`);
             const res_newsapi = await axios.get(`https://newsapi.org/v2/top-headlines?country=${countryCode}&category=${category}&apiKey=${apiKey}`)
+
             const data = res_timeseries.data[selectedCountry];
             const news = res_newsapi.data.articles;
-            
+            const allData = res_timeseries.data;
+
             this.setState({
                 country: selectedCountry,
                 data,
                 dataLength: data.length,
-                news: news
+                news: news,
+                allData: allData
             });
         }
 
@@ -87,6 +92,11 @@ class Board extends React.Component {
                         <Row>
                             <Col md={6} xs={12}>
                                 <GreetingCard/>
+                            </Col>
+                            <Col md={6} xs={12}>
+                                <Card className={styles.card}>
+                                    <CountryComparisonSection data={this.state.allData}/>
+                                </Card>
                             </Col>
                         </Row>
                         <br/>

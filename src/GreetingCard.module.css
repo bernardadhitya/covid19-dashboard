@@ -5,16 +5,28 @@
     text-align: left;
     border: 1px solid rgb(216, 216, 216);
     padding: 25px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 
+              0 6px 20px 0 rgba(0, 0, 0, 0.12);
 }
 
-.content{
+.greetingCard .content{
     margin: auto;
 }
 
-img {
+.greetingCard img {
     width: 35%;
     height: auto;
     object-fit: cover;
-    margin-right: 20px;
+    margin: 0 20px;
+}
+
+@media only screen and (max-width: 767px){
+    .greetingCard img{
+        width: 100%;
+        margin: 20px 0;
+    }
+    .greetingCard{
+        display: block;
+    }
 }
