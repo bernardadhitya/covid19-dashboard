@@ -95,7 +95,10 @@ class Board extends React.Component {
                             </Col>
                             <Col md={6} xs={12}>
                                 <Card className={styles.card}>
-                                    <CountryComparisonSection data={this.state.allData}/>
+                                    <Card.Header>Top Confirmed Cases</Card.Header>
+                                    <Card.Body>
+                                        <CountryComparisonSection data={this.state.allData}/>
+                                    </Card.Body>
                                 </Card>
                             </Col>
                         </Row>
