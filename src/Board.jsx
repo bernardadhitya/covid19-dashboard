@@ -44,7 +44,7 @@ class Board extends React.Component {
                 return obj.country === selectedCountry;
             })[0].code;
             
-            const apiKey = 'b90d874229d74212b87711367dff21bf';
+            const apiKey = process.env.REACT_APP_NEWSAPI_KEY;
             const category = 'health'
 
             const res_timeseries = await axios.get(`https://pomber.github.io/covid19/timeseries.json`);
