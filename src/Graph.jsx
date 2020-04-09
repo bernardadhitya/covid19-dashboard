@@ -1,5 +1,6 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import styles from './Graph.module.css';
 
 class Graph extends React.Component {
     render(){
@@ -89,11 +90,15 @@ class Graph extends React.Component {
               }
             ]
           };
-
         return (
-            <div style={{marginBottom: '20px'}}>
-                <Line data={data} />
+          <div>
+            <div style={{marginBottom: '20px'}} className={styles.regular}>
+                <Line data={data}/>
             </div>
+            <div style={{marginBottom: '20px'}} className={styles.compact}>
+                <Line data={data} height={300}/>
+            </div>
+          </div>
         );
     }
 }
