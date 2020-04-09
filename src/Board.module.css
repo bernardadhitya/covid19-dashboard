@@ -9,6 +9,31 @@
               0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.floatingToast{
+  position: fixed;
+  top: 75;
+  left: 75;
+  z-index: 10;
+  margin: 15px;
+}
+
+.greetingToast{
+  display: flex;
+  height: auto;
+  text-align: left;
+  padding: 25px;
+}
+
+.greetingToast .content{
+  margin: auto;
+}
+
+.greetingToast img {
+  width: 35%;
+  height: auto;
+  object-fit: cover;
+  margin: 0 20px;
+}
 
 .card{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 

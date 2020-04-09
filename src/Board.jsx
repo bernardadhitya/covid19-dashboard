@@ -4,7 +4,8 @@ import {    Container,
             Row,
             Col,
             Card,
-            CardDeck } from 'react-bootstrap';
+            CardDeck,
+            Modal } from 'react-bootstrap';
 import {countries, countryCodes} from './countries';
 import DataSection from './DataSection';
 import NewsSection from './NewsSection';
@@ -29,7 +30,8 @@ class Board extends React.Component {
                 allData: {},
                 news: [],
                 dataLength: 1,
-                showWelcomeMessage: true
+                showWelcomeMessage: true,
+                show: window.screen.width < 768 ? false : true
             }
         }
 
@@ -65,11 +67,11 @@ class Board extends React.Component {
             this.loadData(eventKey.value);
         }
 
-        toggleShowA = () => {
+        handleHide = () => {
             this.setState({
-                showWelcomeMessage: !this.state.showWelcomeMessage
+                show: false
             })
-        };
+        }
 
         render() {
             return ( 
@@ -89,8 +91,27 @@ class Board extends React.Component {
                         />
                     </div>
                     <Container fluid>
+                        <Row>
+                            <Col>
+                                <Modal
+                                size="lg"
+                                show={this.state.show}
+                                onHide={this.handleHide}
+                                >
+                                    <Modal.Header closeButton>Welcome</Modal.Header>
+                                    <Modal.Body >
+                                    <div className={styles.greetingToast}>
+                                        <img src={require('./assets/meeting.png')} alt=""/>
+                                        <div className={styles.content}>
+                                            <h3>Hi there!</h3>
+                                            <p>Welcome to COVID-19 Dashboard! Thank you for visiting. Here, you can take a look on how your country (and other countries) is doing regarding this pandemic. Stay updated, and please take care!</p>
+                                        </div>
+                                    </div>
+                                    </Modal.Body>
+                                </Modal>
+                            </Col>
+                        </Row>
                         <br/>
-                        
                         <Row>
                             <Col xs={12} className="d-xs-block d-md-none">
                                 <GreetingCard />
