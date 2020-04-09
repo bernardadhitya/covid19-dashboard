@@ -14,10 +14,11 @@
     margin: 20px 10px;
 }
 
-img {
+.newsCard img {
     width: 45%;
     height: auto;
     object-fit: cover;
+    max-height: 200px;
 }
 
 a h5{

@@ -30,7 +30,7 @@ class Board extends React.Component {
                 allData: {},
                 news: [],
                 dataLength: 1,
-                showWelcomeMessage: true,
+                showWelcomeCard: true,
                 show: window.screen.width < 768 ? false : true
             }
         }
@@ -65,6 +65,9 @@ class Board extends React.Component {
 
         handleSelect = (eventKey) => {
             this.loadData(eventKey.value);
+            this.setState({
+                showWelcomeCard: false
+            })
         }
 
         handleHide = () => {
@@ -111,11 +114,17 @@ class Board extends React.Component {
                                 </Modal>
                             </Col>
                         </Row>
-                        <br/>
+                        { this.state.showWelcomeCard ? <br/> : null }
                         <Row>
-                            <Col xs={12} className="d-xs-block d-md-none">
-                                <GreetingCard />
-                            </Col>
+                            {
+                                this.state.showWelcomeCard ? 
+                                (
+                                <Col xs={12} className="d-xs-block d-md-none">
+                                    <GreetingCard />
+                                </Col>
+                                ) 
+                                : null
+                            }
                             <Col md={12} xs={0} className="d-none d-md-block">
                                 <CardDeck>
                                     <Card className={styles.card}>
@@ -136,7 +145,7 @@ class Board extends React.Component {
                                 </CardDeck>          
                             </Col>
                         </Row>
-                        <br/>
+                        { this.state.showWelcomeCard ? <br/> : null }
                         <Row>
                             <Col md={8} xs={12}>
                                 <Card className={styles.card}>
