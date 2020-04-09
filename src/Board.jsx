@@ -3,7 +3,8 @@ import axios from 'axios';
 import {    Container,
             Row,
             Col,
-            Card } from 'react-bootstrap';
+            Card,
+            CardDeck } from 'react-bootstrap';
 import {countries, countryCodes} from './countries';
 import DataSection from './DataSection';
 import NewsSection from './NewsSection';
@@ -89,17 +90,29 @@ class Board extends React.Component {
                     </div>
                     <Container fluid>
                         <br/>
+                        
                         <Row>
-                            <Col md={6} xs={12}>
-                                <GreetingCard/>
+                            <Col xs={12} className="d-xs-block d-md-none">
+                                <GreetingCard />
                             </Col>
-                            <Col md={4} xs={12}>
-                                <Card className={styles.card}>
-                                    <Card.Header>Top Confirmed Cases</Card.Header>
-                                    <Card.Body>
-                                        <CountryComparisonSection data={this.state.allData}/>
-                                    </Card.Body>
-                                </Card>
+                            <Col md={12} xs={0} className="d-none d-md-block">
+                                <CardDeck>
+                                    <Card className={styles.card}>
+                                        <Card.Body>
+                                            <CountryComparisonSection data={this.state.allData} status="confirmed"/>
+                                        </Card.Body>
+                                    </Card>
+                                    <Card className={styles.card}>
+                                        <Card.Body>
+                                            <CountryComparisonSection data={this.state.allData} status="deaths"/>
+                                        </Card.Body>
+                                    </Card>
+                                    <Card className={styles.card}>
+                                        <Card.Body>
+                                            <CountryComparisonSection data={this.state.allData} status="recovered"/>
+                                        </Card.Body>
+                                    </Card>
+                                </CardDeck>          
                             </Col>
                         </Row>
                         <br/>

@@ -5,7 +5,7 @@ class CountryComparisonSection extends React.Component{
     render(){
         return(
             <div>
-                <DataBar data={this.props.data}/>
+                <DataBar data={this.props.data} status={this.props.status}/>
             </div>
         );
     }

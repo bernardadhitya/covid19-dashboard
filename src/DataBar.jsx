@@ -11,7 +11,8 @@ class DataBar extends React.Component{
 
     findTopCountries(countries, amount){
         let topCountries = [];
-
+        const statusToShow = this.props.status;
+        
         for(const country in countries){
             const countryData = countries[country];
             const dataLength = countryData.length - 1;
@@ -27,7 +28,7 @@ class DataBar extends React.Component{
                 })
             }
             else{
-                if (countryData[dataLength].confirmed > topCountries[amount-1].data.confirmed){
+                if (countryData[dataLength][statusToShow] > topCountries[amount-1].data[statusToShow]){
                     topCountries.pop();
                     topCountries.push({
                         country: country,
@@ -39,7 +40,7 @@ class DataBar extends React.Component{
                     })
                 }
             }
-            topCountries.sort(function(a, b){return b.data.confirmed - a.data.confirmed})
+            topCountries.sort(function(a, b){return b.data[statusToShow] - a.data[statusToShow]});
         }
         return topCountries
     }
@@ -57,18 +58,23 @@ class DataBar extends React.Component{
     }
 
     render(){
-        const dataPoint = this.formattedDataPoints(this.findTopCountries(this.props.data, 5), this.state.status);
+        const colors = {
+            confirmed: 'rgba(240,140,98,',
+            deaths: 'rgba(255,99,132,',
+            recovered: 'rgba(75,192,192,',
+        }
+        const dataPoint = this.formattedDataPoints(this.findTopCountries(this.props.data, 5), this.props.status);
         
         const data = {
             labels: dataPoint.map(country => country.x),
             datasets: [
                 {
-                    label: 'Confirmed cases',
-                    backgroundColor: 'rgba(255,99,132,0.2)',
-                    borderColor: 'rgba(255,99,132,1)',
+                    label: 'top ' + this.props.status + ' cases',
+                    backgroundColor: colors[this.props.status] + '0.2)',
+                    borderColor: colors[this.props.status] + '1)',
                     borderWidth: 1,
-                    hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-                    hoverBorderColor: 'rgba(255,99,132,1)',
+                    hoverBackgroundColor: colors[this.props.status] + '0.4)',
+                    hoverBorderColor: colors[this.props.status] + '1)',
                     data: dataPoint.map(country => country.y)
                 },
             ]
