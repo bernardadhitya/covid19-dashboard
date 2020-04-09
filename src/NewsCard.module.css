@@ -18,7 +18,6 @@
     width: 45%;
     height: auto;
     object-fit: cover;
-    max-height: 200px;
 }
 
 a h5{
@@ -33,12 +32,18 @@ a h6{
     color: rgb(77, 73, 73);
 }
 
+@media only screen and (min-width: 768px){
+    .newsCard img {
+        max-height: 200px;
+    }
+}
+
 @media only screen and (max-width: 767px) {
     .newsCard {
         display: block;
     }
 
-    img {
+    .newsCard img {
         width: 100%
     }
 }
