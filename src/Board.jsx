@@ -114,7 +114,12 @@ class Board extends React.Component {
                                 </Modal>
                             </Col>
                         </Row>
-                        { this.state.showWelcomeCard ? <br/> : null }
+                        { 
+                            window.screen.width < 767 ?
+                            (this.state.showWelcomeCard ? <br/> : null)
+                            :
+                            <br/>
+                        }
                         <Row>
                             {
                                 this.state.showWelcomeCard ? 
@@ -145,7 +150,12 @@ class Board extends React.Component {
                                 </CardDeck>          
                             </Col>
                         </Row>
-                        { this.state.showWelcomeCard ? <br/> : null }
+                        { 
+                            window.screen.width < 767 ?
+                            (this.state.showWelcomeCard ? <br/> : null)
+                            :
+                            <br/>
+                        }
                         <Row>
                             <Col md={8} xs={12}>
                                 <Card className={styles.card}>
