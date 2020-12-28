@@ -13,6 +13,7 @@ import styles from './Board.module.css';
 import ReactSearchBox from 'react-search-box';
 import GreetingCard from './GreetingCard';
 import CountryComparisonSection from './CountryComparisonSection';
+import { dummyNews } from './DummyNews';
 
 
 class Board extends React.Component {
@@ -48,7 +49,8 @@ class Board extends React.Component {
             const category = 'health'
 
             const res_timeseries = await axios.get(`https://pomber.github.io/covid19/timeseries.json`);
-            const res_newsapi = await axios.get(`https://newsapi.org/v2/top-headlines?country=${countryCode}&category=${category}&apiKey=${apiKey}`)
+            const res_newsapi = dummyNews;
+            //const res_newsapi = await axios.get(`https://newsapi.org/v2/top-headlines?country=${countryCode}&category=${category}&apiKey=${apiKey}`)
 
             const data = res_timeseries.data[selectedCountry];
             const news = res_newsapi.data.articles;
